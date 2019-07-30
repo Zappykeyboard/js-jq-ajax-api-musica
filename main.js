@@ -38,8 +38,10 @@ $(document).ready(function () {
 				$("#genres-select").removeAttr("disabled");
 
 			}
-
-
+		},
+		error: function (req, state, err) {
+			alert("Qualcosa è andato storto");
+			console.log(err);
 		}
 	});
 
