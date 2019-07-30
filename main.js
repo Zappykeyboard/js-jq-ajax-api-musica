@@ -2,6 +2,8 @@ $(document).ready(function() {
 
 	var url = "https://flynn.boolean.careers/exercises/api/array/music";
 
+	$("#genres-select").val("All");
+
 	//definisco il template degli album
 	var albumSource = $("#template").html();
 	var albumTemplate = Handlebars.compile(albumSource);
@@ -40,18 +42,24 @@ $(document).ready(function() {
 
 	$("#genres-select option").on("click", function(){
 			
-		var selected = $(this).attr("value");
+		var selected = $(this).val();
 		console.log(selected)
+		if (selected==="All"){
+			$(".cd").show();
+		} else {
 
-		$(".cd").each( function(){
+			$(".cd").each( function(){
 
-			if ($(this).find(".genre").text() === selected){
-				$(this).show();
-			} else {
-				$(this).hide();
-			}
+				if ($(this).find(".genre").text() === selected){
+					$(this).show();
+				} else {
+					$(this).hide();
+				}
+	
+			});
+		}
 
-		});
+		
 
 	});
 
