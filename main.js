@@ -54,8 +54,10 @@ $(document).ready(function () {
 
 			//mostra tutti gli album
 			$(".cd").show();
+
 		} else {
 
+			//mostra quelli corrispondenti alla selezione
 			$(".cd").each(function () {
 
 				if ($(this).find(".genre").text() === selected) {
