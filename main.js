@@ -1,7 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
 	var url = "https://flynn.boolean.careers/exercises/api/array/music";
 
+	//Imposto il valore iniziale al dropdown
 	$("#genres-select").val("All");
 
 	//definisco il template degli album
@@ -12,13 +13,13 @@ $(document).ready(function() {
 	$.ajax({
 		url: url,
 		method: "GET",
-		success: function(data){
-			if (data.success){
-				
+		success: function (data) {
+			if (data.success) {
+
 				var albumList = data.response;
 
-				for (var i = 0; i < albumList.length; i++){
-					
+				for (var i = 0; i < albumList.length; i++) {
+
 					context = {
 						albumPicture: albumList[i].poster,
 						albumName: albumList[i].title,
@@ -29,9 +30,11 @@ $(document).ready(function() {
 
 					var htmlElement = albumTemplate(context);
 
+					//inserisco gli elementi html
 					$(".cds-container").append(htmlElement);
 				}
 
+				//attivo il dropdown di ricerca
 				$("#genres-select").removeAttr("disabled");
 
 			}
@@ -40,26 +43,29 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#genres-select option").on("click", function(){
-			
+	//funzione di ricerca album per genere
+	$("#genres-select").on("click", function () {
+
 		var selected = $(this).val();
-		console.log(selected)
-		if (selected==="All"){
+
+		if (selected === "All") {
+
+			//mostra tutti gli album
 			$(".cd").show();
 		} else {
 
-			$(".cd").each( function(){
+			$(".cd").each(function () {
 
-				if ($(this).find(".genre").text() === selected){
+				if ($(this).find(".genre").text() === selected) {
 					$(this).show();
 				} else {
 					$(this).hide();
 				}
-	
+
 			});
 		}
 
-		
+
 
 	});
 
