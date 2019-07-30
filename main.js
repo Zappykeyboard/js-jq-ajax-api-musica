@@ -21,7 +21,8 @@ $(document).ready(function() {
 						albumPicture: albumList[i].poster,
 						albumName: albumList[i].title,
 						albumAuthor: albumList[i].author,
-						albumYear: albumList[i].year
+						albumYear: albumList[i].year,
+						albumGenre: albumList[i].genre
 					}
 
 					var htmlElement = albumTemplate(context);
@@ -29,10 +30,29 @@ $(document).ready(function() {
 					$(".cds-container").append(htmlElement);
 				}
 
+				$("#genres-select").removeAttr("disabled");
+
 			}
 
 
 		}
-	})
+	});
+
+	$("#genres-select option").on("click", function(){
+			
+		var selected = $(this).attr("value");
+		console.log(selected)
+
+		$(".cd").each( function(){
+
+			if ($(this).find(".genre").text() === selected){
+				$(this).show();
+			} else {
+				$(this).hide();
+			}
+
+		});
+
+	});
 
 });

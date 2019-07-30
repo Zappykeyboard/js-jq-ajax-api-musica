@@ -14,6 +14,12 @@
     <header>
         <div class="container">
             <img src="logo.png" alt="logo" />
+            <select disabled="false" name="generes" id="genres-select" aria-placeholder="seleziona genere">
+                <option value="Pop">pop</option>
+                <option value="Rock">rock</option>
+                <option value="Metal">metal</option>
+                <option value="Jazz">jazz</option>
+            </select>
         </div>
     </header>
 
@@ -26,6 +32,7 @@
                 <h3>{{albumName}}</h3>
                 <span class="author">{{albumAuthor}}</span>
                 <span class="year">{{albumYear}}</span>
+                <span class="genre">{{albumGenre}}</span>
             </div>
         </script>
     </div>
